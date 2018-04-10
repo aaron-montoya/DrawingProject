@@ -150,7 +150,20 @@ public class ArtPanel extends JPanel
 	
 	private Rectangle createRectangle()
 	{
+		Rectangle currentRectangle;
 		
+		int cornerX = (int) (Math.random() * 600);
+		int cornerY = (int) (Math.random() * 600);
+		double width = Math.random() * currentScale + 1;
+		if (coinFlip())
+		{
+			currentRectangle = new Rectangle(cornerX, cornerY, width, width);
+		}
+		else
+		{
+			int height = (int) (Math.random() * currentScale) + 1;
+			currentRectangle = new Rectangle(cornerX, cornerY, width, height);
+		}
 	}
 	
 	private Ellipse2D createEllipse()
@@ -162,8 +175,14 @@ public class ArtPanel extends JPanel
 		double width = Math.random() * currentScale + 1;
 		if (coinFlip())
 		{
-			
+			ellipse.setFrame(cornerX, cornerY, width, width);
 		}
+		else
+		{
+			double height = Math.random() * currentScale + 1;
+			ellipse.setFrame(cornerX, cornerY, width, height);
+		}
+	}
 	
 	private void setupLayout()
 	{
